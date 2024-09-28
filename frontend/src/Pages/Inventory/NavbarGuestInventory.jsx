@@ -9,23 +9,29 @@ function NavbarGuestInventory() {
     { nama: "Fitur Website", link: "/inventory-fitur-webiste" },
   ];
   return (
-    <div className="flex gap-64 py-5 px-10 items-center bg-[#F5F6FE] relative z-50">
-      <div className="flex items-center gap-5">
-        <img src="assets/logo.png" alt="" className="w-10 h-10" />
-        <SecondaryText name={"Telkom University"} />
-      </div>
-      <div className="flex gap-20">
-        {data.map((i) => (
-          <NavLink
-            key={i.nama}
-            to={i.link}
-            className={({ isActive, isPending }) =>
-              isPending ? "pending" : isActive ? "text-[#8795FE]" : ""
-            }
-          >
-            <NavbarText name={i.nama} />
-          </NavLink>
-        ))}
+    <div className="sticky top-0 z-50">
+      <div className="flex gap-64 py-5 px-20 items-center bg-white relative z-50">
+        <div className="flex items-center gap-5">
+          <img src="assets/logo.png" alt="" className="w-20 h-20" />
+          <SecondaryText name={"Telkom University"} />
+        </div>
+        <div className="flex gap-5">
+          {data.map((i) => (
+            <NavLink
+              key={i.nama}
+              to={i.link}
+              className={({ isActive, isPending }) =>
+                isPending
+                  ? "pending"
+                  : isActive
+                  ? "transition-all duration-500 bg-blue-500 p-4 rounded-full w-56 text-center text-white shadow-lg shadow-blue-500/50 hover:bg-blue-600"
+                  : "transition-all duration-500 p-4 w-56 text-center hover:text-blue-500"
+              }
+            >
+              <NavbarText name={i.nama} />
+            </NavLink>
+          ))}
+        </div>
       </div>
     </div>
   );
